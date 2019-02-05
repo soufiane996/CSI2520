@@ -1,0 +1,71 @@
+# Devoir 1- CSI2520 
+# Nom: Soufiane El wadia 
+# Num d'etudiant: 7748495 
+
+
+Question 1: 
+
+a) la requete qui permet d'obtenir la liste des personnes qui travaillent dans une autre ville que celle ou ils vivent serait la suivante: 
+
+findall(X,(person(X,B),employee(X,C),company(C,Z),not(B=Z)),LISTE).
+
+b) la requete qui permet d'obtenir des compagnies ontariennes: 
+
+findall(X,(company(X,B),city(B,ontario)),LISTE).
+
+c) la requete qui permet d'obtenir les personnes sans emploi: 
+
+ findall(X,(person(X,_),not(employee(X,_))),LISTE).
+
+ d) la requete qui permet d'obtenir les personnes qui travaillent a ottawa: 
+
+ findall(X,(company(C,ottawa),employee(X,C)),LISTE). 
+
+ e) La liste contient deux fois le nom marie parcequ'elle travail pour Shopify et rossvideo qui se trouvent les 2 a ottawa. 
+
+ On peut utiliser setof (cherche tout les resultat mais enleve les duplicates )de la façon suivante: 
+
+ setof(X,(company(C,ottawa),employee(X,C)),LISTE). 
+
+Question 2: 
+
+
+
+
+
+
+
+
+
+
+Question 3: 
+
+degToRad(A,B) :- B is pi*(A/180).
+
+distance(LAT1,LON1,LAT2,LON2,D) :- degToRad(LAT1,LATR1), degToRad(LON1,LONR1), 
+								degToRad(LAT2,LATR2), degToRad(LON2,LONR2),
+ 								A is (sin((LATR1-LATR2)/2))^2,
+    							B is cos(LATR1)*cos(LATR2)*(sin((LONR1-LONR2)/2))^2,
+    							C is 2*asin(sqrt(A+B)),
+    							D is C*6371.0.
+
+
+Question 4: 
+
+absDiffA([],[],[]).
+
+absDiffA([H|T],[],A):- absDiffA(T,[],A2), append([H],A2,A).
+
+absDiffA([],[H|T],A):- absDiffA([],T,A2), append([H],A2,A).
+
+absDiffA([H1|T1],[H2|T2],A):- absDiffA(T1,T2,A2), H3 is abs(H1-H2), append([H3],A2,A). absDiffB([],[],[]).
+
+absDiffB([H|T],[],[]).
+
+absDiffB([],[H|T],[]).
+
+absDiffB([H1|T1],[H2|T2],A):- absDiffB(T1,T2,A2), H3 is abs(H1-H2), append([H3],A2,A).
+
+
+Question 5: 
+

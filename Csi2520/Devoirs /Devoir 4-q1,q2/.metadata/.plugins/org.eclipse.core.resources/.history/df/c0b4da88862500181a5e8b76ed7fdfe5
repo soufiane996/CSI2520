@@ -1,0 +1,60 @@
+package process;
+
+import java.util.ArrayList;
+
+public class Node<T,L,l> {
+	
+	
+	private T id;
+	private L latitude;
+	private l longitude; 
+	private ArrayList<Node<T,L,l>> child = new ArrayList<>();
+	private Node<T,L,l> parent = null;
+	
+	public Node(T id,L latitude, l longitude) {
+		this.id=id;
+		this.latitude=latitude;
+		this.longitude=longitude;
+	}
+	public T getId() {
+		return id;
+	}
+	public void setId(T id) {
+		this.id = id;
+	}
+	public L getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(L latitude) {
+		this.latitude = latitude;
+	}
+	public l getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(l longitude) {
+		this.longitude = longitude;
+	}
+	
+	public Node<T,L,l> getParent(){
+		return parent; 
+	}
+	public void setParent(Node<T,L,l> parent) {
+		this.parent=parent; 
+	}
+	
+	public Node<T,L,l> addChild(Node<T,L,l> child){
+		child.setParent(this);
+		this.child.add(child); //ajouter enfant au arraylist des enfants.
+		return child;
+	}
+	
+	public void addChildren(ArrayList<Node<T,L,l>> child) {
+		child.forEach(each -> each.setParent(this));
+		this.child.addAll(child);
+		
+	}
+
+	
+
+	
+}

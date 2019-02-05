@@ -1,0 +1,109 @@
+#El wadia Soufiane - 7748495 
+#Devoir 2 
+
+
+-Question 1: 
+
+;;Fonction pour Convertir du deg au rad
+
+(define 
+  (
+    angleRad angDeg
+  )
+   (* pi (/ angDeg 180))
+  
+)
+
+;;Fonction ajoutee pour reduire le calcul (c'est devenu messy et dur a suivre ) 
+(define (op1 value1 value2)
+  (expt (sin (/ (- value1 value2) 2)) 2))
+;;Fonction principale qui calcule la distance en radian 
+(define (distanceGPS latDEG1 lonDEG1 latDEG2 lonDEG2)
+  (let (
+        [lat1 (angleRad latDEG1)] ;;Ici on fait appel a la fonction pour convertir le input 
+        [lon1 (angleRad lonDEG1)]
+        [lat2 (angleRad latDEG2)]
+        [lon2 (angleRad lonDEG2)])
+    (* 2 6371.0 (asin (sqrt (+ (op1 lat1 lat2) (* (cos lat1) (cos lat2) (op1 lon1 lon2))))))))
+
+
+(define pi 3.14159265359) 
+
+-Question 2: 
+;;a)
+(define (absDiffA l1 l2)
+  (cond
+    [(and (null? l1) (not (null? l2))) (cons (car l2) (absDiffA l1 (cdr l2)))]
+    [(and (not (null? l1)) (not (null? l2))) (cons (abs (- (car l1) (car l2))) (absDiffA (cdr l1) (cdr l2)))]
+    [(and (not (null? l1)) (null? l2)) (cons (car l1) (absDiffA (cdr l1) l2))]
+    [else '()]))
+
+;;b)
+(define (absDiffB l1 l2)
+  (cond
+    [(and (not (null? l1)) (not (null? l2))) (cons (abs (- (car l1) (car l2))) (absDiffB (cdr l1) (cdr l2)))]
+    [else '()]))
+
+-Question 3: 
+;;a)
+;;fonction principale 
+(define (duplicatePair l)
+  (let dup( [a '()]
+            [c (car l)]
+            [r (cdr l)])
+  (cond
+    [(null? r) '()]
+    [(not (member c a)) (cons (cons c (numPar c l)) (dup (cons c a) (car r)
+                                                    (cdr r)))]
+    [else (dup (cons c a) (car r) (cdr r))]
+))
+)
+;;Cette fonction cherche l'occurence d'un element (e) d'un element dans la liste (l) est devrait etre utilise pour le reste des section de l'exercice
+(define (numPar e l)
+  (cond 
+        [(null? l) 0]
+        [(equal? (car l) e)(+ 1 (numPar e (cdr l)))]
+        [else (+ 0 (numPar e (cdr l)))]))
+;;b) 
+(define (duplicateList list)
+  (let dup ([a '()]
+            [c (car list)]
+            [r (cdr list)])
+    (cond
+      [(null? r) '()]
+      [(not (member c a)) (cons (cons c (cons (numPar c list) '())) (dup (cons c a) (car r) (cdr r)))]
+      [else (dup (cons c a) (car r) (cdr r))])))
+;;c)
+(define (duplicateListSorted list)
+  (sort
+   (let dup ([a '()]
+             [c (car list)]
+             [r (cdr list)])
+     (cond
+       [(null? r) '()]
+       [(not (member c a)) (cons (cons c (cons (numPar c list) '())) (dup (cons c a) (car r) (cdr r)))]
+       [else (dup (cons c a) (car r) (cdr r))]))
+   (lambda (x y) (> (car (cdr x)) (car (cdr y))))))
+
+-Question 4: 
+;;Fonction principale
+(define (children valeurNoeud v)
+  (sort
+   (let traverse ([t v])
+     (cond
+       [(null? t) #f]
+       [(and (not (list? (car t))) (eq? valeurNoeud (car t))) (chercheEnfant (cdr t))]
+       [(not (list? (car t))) (traverse (cdr t))]
+       [else (or (traverse (car t)) (traverse (cdr t)))])) >))
+
+;;Fonction qui retourne la valeur des enfants 
+(define (chercheEnfant v)
+  (let traverse ([t v])
+      (cond
+        [(null? t) '()]
+        [(list? (car t)) (cons (car (car t)) (traverse (cdr t)))])))
+
+
+
+
+

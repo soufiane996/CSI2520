@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.Iterator;
+
+
+
+public class OpenFile {
+	
+	public static void main(String[] xs) {
+		
+		//Nom du fichier a ouvrir 
+		String fileName = "text.txt"; 
+		try {
+			File fileName1 = new File("text.txt");
+			System.out.println(fileName1.getCanonicalPath());
+			FileInputStream inputFile = new FileInputStream(fileName);
+			
+			DataInputStream in = new DataInputStream(inputFile);
+			BufferedReader bufread = new BufferedReader(new InputStreamReader(in));
+			String l; 
+			
+			while((l= bufread.readLine())!= null) {
+				System.out.println(l);
+			}
+			
+			
+		}catch(Exception g) {
+			
+		}
+		
+		/*System.out.println("I got the file !!");
+		//
+		String l= null; 
+		try {
+			
+			FileReader read = new FileReader(fileName); 
+			System.out.println("Reading the File");
+			
+			BufferedReader bufread = new BufferedReader(read); 
+			
+			while((l = bufread.readLine())!=null) {
+				System.out.println(l);
+			}
+			
+			bufread.close();
+			
+		}catch (Exception e) {
+			System.err.format("Exception occured trying to read '%s'. ", fileName);
+		}
+		
+	*/	
+	}
+
+}

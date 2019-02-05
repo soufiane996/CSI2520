@@ -1,0 +1,8 @@
+package process;
+
+public class Tree {
+     
+	private Node<T,L,l> root ;
+	
+	 
+}

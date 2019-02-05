@@ -1,0 +1,7 @@
+La Ville d’Ottawa doit maintenir et inspecter de nombreuses infrastructures. Les inspecteurs de la Ville doivent
+ainsi régulièrement visiter différentes installations à travers la Ville. Votre mission est donc de les aider à établir
+un parcours de visite. Nous recherchons ici un parcours raisonnable, c’est­à­dire un parcours pas trop long
+permettant de visiter tous les sites. Nous ne demandons pas de trouver le chemin optimal
+
+
+

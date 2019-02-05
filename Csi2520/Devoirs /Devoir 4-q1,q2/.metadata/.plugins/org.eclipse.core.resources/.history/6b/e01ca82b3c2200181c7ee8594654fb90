@@ -1,0 +1,44 @@
+import java.io.*; 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Iterator;
+
+
+
+public class OpenFile {
+	
+	public static void main(String[] xs) {
+		
+		//Nom du fichier a ouvrir 
+		String fileName = "text.txt"; 
+		System.out.println("I got the file !!");
+		//
+		String l= null; 
+		try {
+			
+			FileReader read = new FileReader(fileName); 
+			System.out.println("Reading the File");
+			
+			BufferedReader bufread = new BufferedReader(read); 
+			
+			while((l = bufread.readLine())!=null) {
+				System.out.println(l);
+			}
+			
+			bufread.close();
+			
+		}catch(FileNotFoundException d){
+			
+			System.out.println("Fichier Introuvable !\n");
+			
+			d.printStackTrace();
+		}catch(IOException e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

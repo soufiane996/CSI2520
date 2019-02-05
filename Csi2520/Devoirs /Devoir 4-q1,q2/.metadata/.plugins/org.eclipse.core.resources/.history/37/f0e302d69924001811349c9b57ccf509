@@ -1,0 +1,55 @@
+import java.io.*;
+import java.text.ParseException;
+import java.util.Iterator;
+import org.json.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+public class OpenFile {
+	
+	public static void main(String[] xs) {
+		JSONParser parser = new JSONParser();
+		
+		
+		try {
+			//Parse the JSON file 
+			Object obj = parser.parse(new FileReader("Wading-pools.json")); 
+			//Typecast the object to a JSON object 
+			JSONObject jsonObj = (JSONObject) obj; 
+			String type = (String) jsonObj.get("type"); 
+			System.out.println(type);
+			
+			
+		}catch(FileNotFoundException g) {
+			g.printStackTrace();
+		}catch(IOException g) {
+			g.printStackTrace();
+		}catch(Exception g) {
+			g.printStackTrace();
+		}
+		
+		
+		/*System.out.println("I got the file !!");
+		//
+		String l= null; 
+		try {
+			
+			FileReader read = new FileReader(fileName); 
+			System.out.println("Reading the File");
+			
+			BufferedReader bufread = new BufferedReader(read); 
+			
+			while((l = bufread.readLine())!=null) {
+				System.out.println(l);
+			}
+			
+			bufread.close();
+			
+		}catch (Exception e) {
+			System.err.format("Exception occured trying to read '%s'. ", fileName);
+		}
+		
+	*/	
+	}
+
+}

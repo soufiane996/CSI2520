@@ -1,0 +1,49 @@
+package process;
+import java.io.*; 
+import java.util.*;
+
+public class FindRoute {
+
+	
+	private String file_name = "test_input.txt";
+	public static void main(String[] args) {
+		
+		
+		
+		
+	}
+	
+	public void parcours() {
+		
+		
+		
+	}
+	
+	
+	/**
+	 * Open and read a file, and return the lines in the file as a list
+	 * of Strings.
+	 * (Demonstrates Java FileReader, BufferedReader, and Java5.)
+	 */
+	private List<String> readFile(String filename)
+	{
+	  List<String> records = new ArrayList<String>();
+	  try
+	  {
+	    BufferedReader reader = new BufferedReader(new FileReader(file_name));
+	    String line;
+	    while ((line = reader.readLine()) != null)
+	    {
+	      records.add(line);
+	    }
+	    reader.close();
+	    return records;
+	  }
+	  catch (Exception e)
+	  {
+	    System.err.format("Exception occurred trying to read '%s'.", file_name);
+	    e.printStackTrace();
+	    return null;
+	  }
+	}
+}
