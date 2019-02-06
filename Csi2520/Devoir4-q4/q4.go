@@ -1,8 +1,4 @@
-/* Justin Huynh
- * 7745112
- * CSI2120
- * Comprehensive Assignment Part 3
- */
+
  
 package main
 
