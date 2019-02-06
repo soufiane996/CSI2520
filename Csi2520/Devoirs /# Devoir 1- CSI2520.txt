@@ -1,6 +1,5 @@
 # Devoir 1- CSI2520 
-# Nom: Soufiane El wadia 
-# Num d'etudiant: 7748495 
+
 
 
 Question 1: 
